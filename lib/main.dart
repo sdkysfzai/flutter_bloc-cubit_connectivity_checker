@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return BlocProvider(
       create: (context) => InternetBloc(),
       child: MaterialApp(
-        title: 'Flutter Connectivity Checker Bloc',
+        title: 'Flutter_Bloc Connectivity Checker ',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
