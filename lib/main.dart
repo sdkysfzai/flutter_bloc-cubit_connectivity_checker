@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_connectivity_checker/blocs/internet_bloc/internet_bloc.dart';
+import 'package:flutter_bloc_connectivity_checker/cubits/connectivity_cubit.dart';
 import 'package:flutter_bloc_connectivity_checker/screens/home_screen.dart';
 
 void main() {
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => InternetBloc(),
+      create: (context) => ConnectivityCubit(),
       child: MaterialApp(
         title: 'Flutter_Bloc Connectivity Checker ',
         theme: ThemeData(

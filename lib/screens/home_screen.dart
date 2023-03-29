@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_bloc_connectivity_checker/blocs/internet_bloc/internet_bloc.dart';
-import 'package:flutter_bloc_connectivity_checker/blocs/internet_bloc/internet_state.dart';
+import 'package:flutter_bloc_connectivity_checker/cubits/connectivity_cubit.dart';
+import 'package:flutter_bloc_connectivity_checker/cubits/connectivity_state.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -13,14 +13,14 @@ class HomeScreen extends StatelessWidget {
         title: const Text('Bloc Connectivitiy Checker'),
       ),
       body: Center(
-        child: BlocConsumer<InternetBloc, InternetState>(
+        child: BlocConsumer<ConnectivityCubit, ConnectivityState>(
           listener: (context, state) {
-            if (state is InternetGaintedState) {
+            if (state is ConnectivityGainedState) {
               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                 content: Text('Connected'),
                 backgroundColor: Colors.green,
               ));
-            } else if (state is InternetLostState) {
+            } else if (state is ConnectivityLostState) {
               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                 content: Text('Disconnected'),
                 backgroundColor: Colors.red,
@@ -28,9 +28,9 @@ class HomeScreen extends StatelessWidget {
             }
           },
           builder: (context, state) {
-            if (state is InternetGaintedState) {
+            if (state is ConnectivityGainedState) {
               return const Text('Connected');
-            } else if (state is InternetLostState) {
+            } else if (state is ConnectivityLostState) {
               return const Text('Not Connected!');
             } else {
               return const Text('Loading...');
